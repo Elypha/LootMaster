@@ -117,7 +117,7 @@ namespace DalamudPluginProjectTemplate
         }
 
         [Command("/needonly")]
-        [HelpMessage("Roll need for everything. If impossible, roll greed. Else, roll pass")]
+        [HelpMessage("Roll need for everything. If impossible, roll pass")]
         public async void NeedOnlyCommand(string command, string args)
         {
             int num1 = 0;
