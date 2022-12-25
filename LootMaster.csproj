@@ -17,13 +17,13 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(AppData)\XIVLauncher\devPlugins\LootMaster\</OutputPath>
+    <OutputPath>E:\repos\LootMaster\Build\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
+    <DalamudLibPath>D:\apps\XIVLauncherCN\Roaming\addon\Hooks\dev\</DalamudLibPath>
   </PropertyGroup>
-	
+
   <ItemGroup>
     <PackageReference Include="DalamudPackager" Version="2.1.8" />
     <Reference Include="FFXIVClientStructs">
