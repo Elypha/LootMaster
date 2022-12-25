@@ -39,6 +39,8 @@ namespace DalamudPluginProjectTemplate
 
         public string Name => "LootMaster";
 
+        public Random rd = new Random();
+
         public Plugin()
         {
             lootsAddr = SigScanner.GetStaticAddressFromSig("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 89 44 24 60", 0);
@@ -64,7 +66,7 @@ namespace DalamudPluginProjectTemplate
 
         [Command("/need")]
         [HelpMessage("Roll need for everything. If impossible, roll greed. Else, roll pass")]
-        public void NeedCommand(string command, string args)
+        public async void NeedCommand(string command, string args)
         {
             int num1 = 0;
             int num2 = 0;
@@ -88,6 +90,7 @@ namespace DalamudPluginProjectTemplate
                         RollItem(RollOption.Pass, index);
                         ++num3;
                     }
+                    await System.Threading.Tasks.Task.Delay(rd.Next(600, 1600));
                 }
             }
             if (!config.EnableChatLogMessage)
@@ -115,7 +118,7 @@ namespace DalamudPluginProjectTemplate
 
         [Command("/needonly")]
         [HelpMessage("Roll need for everything. If impossible, roll greed. Else, roll pass")]
-        public void NeedOnlyCommand(string command, string args)
+        public async void NeedOnlyCommand(string command, string args)
         {
             int num1 = 0;
             int num2 = 0;
@@ -133,6 +136,7 @@ namespace DalamudPluginProjectTemplate
                         RollItem(RollOption.Pass, index);
                         ++num2;
                     }
+                    await System.Threading.Tasks.Task.Delay(rd.Next(600, 1600));
                 }
             }
             if (!config.EnableChatLogMessage)
@@ -155,7 +159,7 @@ namespace DalamudPluginProjectTemplate
         }
         [Command("/greed")]
         [HelpMessage("Greed on all items.")]
-        public void GreedCommand(string command, string args)
+        public async void GreedCommand(string command, string args)
         {
             int num = 0;
             int num1 = 0;
@@ -171,6 +175,7 @@ namespace DalamudPluginProjectTemplate
                     RollItem(RollOption.Pass, index);
                     ++num1;
                 }
+                await System.Threading.Tasks.Task.Delay(rd.Next(600, 1600));
             }
             if (!config.EnableChatLogMessage)
                 return;
@@ -193,7 +198,7 @@ namespace DalamudPluginProjectTemplate
 
         [Command("/pass")]
         [HelpMessage("Pass on things you haven't rolled for yet.")]
-        public void PassCommand(string command, string args)
+        public async void PassCommand(string command, string args)
         {
             int num = 0;
             for (int index = 0; index < LootItems.Count; ++index)
@@ -203,6 +208,7 @@ namespace DalamudPluginProjectTemplate
                     RollItem(RollOption.Pass, index);
                     ++num;
                 }
+                await System.Threading.Tasks.Task.Delay(rd.Next(600, 1600));
             }
             if (!config.EnableChatLogMessage)
                 return;
@@ -221,7 +227,7 @@ namespace DalamudPluginProjectTemplate
 
         [Command("/passall")]
         [HelpMessage("Passes on all, even if you rolled on them previously.")]
-        public void PassAllCommand(string command, string args)
+        public async void PassAllCommand(string command, string args)
         {
             int num = 0;
             for (int index = 0; index < LootItems.Count; ++index)
@@ -231,6 +237,7 @@ namespace DalamudPluginProjectTemplate
                     RollItem(RollOption.Pass, index);
                     ++num;
                 }
+                await System.Threading.Tasks.Task.Delay(rd.Next(600, 1600));
             }
             if (!config.EnableChatLogMessage)
                 return;
